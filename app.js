@@ -40,13 +40,6 @@ keypad.addEventListener("click", (event) => {
 });
 
 function handleNumber(value) {
-  // if (operator === "") {
-  //   currentNumber += value;
-  //   firstOperand = currentNumber;
-  // } else {
-  //   currentNumber += value;
-  // }
-  // displayNumber.textContent = currentNumber;
   currentNumber += value;
   displayNumber.textContent = currentNumber;
 }
