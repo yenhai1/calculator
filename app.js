@@ -40,12 +40,14 @@ keypad.addEventListener("click", (event) => {
 });
 
 function handleNumber(value) {
-  if (operator === "") {
-    currentNumber += value;
-    firstOperand = currentNumber;
-  } else {
-    currentNumber += value;
-  }
+  // if (operator === "") {
+  //   currentNumber += value;
+  //   firstOperand = currentNumber;
+  // } else {
+  //   currentNumber += value;
+  // }
+  // displayNumber.textContent = currentNumber;
+  currentNumber += value;
   displayNumber.textContent = currentNumber;
 }
 
@@ -59,11 +61,23 @@ function handleDecimal() {
 
 function handleOperator(op) {
   if (firstOperand !== "") {
-    operator = op;
+    if (currentNumber !== "") {
+      result = operate(
+        parseFloat(firstOperand),
+        parseFloat(currentNumber),
+        operator
+      );
+    }
+    displayNumber.textContent = result;
+    firstOperand = result.toString();
     currentNumber = "";
-    decimalUsed = false;
-    displayOperator.textContent = op;
+  } else {
+    firstOperand = currentNumber;
+    currentNumber = "";
   }
+  operator = op;
+  decimalUsed = false;
+  displayOperator.textContent = op;
 }
 
 function handleEqual() {
@@ -76,7 +90,7 @@ function handleEqual() {
     displayNumber.textContent = result;
     displayOperator.textContent = "";
     // Reset the state for next operation
-    firstOperand = result;
+    firstOperand = result.toString();
     currentNumber = "";
     operator = "";
     decimalUsed = false;
@@ -116,8 +130,8 @@ function operate(a, b, op) {
       return roundToFiveDecimals(a * b);
     case "/":
       return b !== 0 ? roundToFiveDecimals(a / b) : "ERROR";
-    default:
-      return "ERROR";
+    // default:
+    //   return "ERROR";
   }
 }
 
