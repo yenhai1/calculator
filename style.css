@@ -27,7 +27,8 @@ svg {
 }
 
 .container {
-  width: 450px;
+  max-width: 450px;
+  width: 98%;
   display: flex;
   padding: 0.5em;
   flex-direction: column;
@@ -44,7 +45,9 @@ svg {
 }
 
 .display {
-  padding: 0.15em;
+  flex: 1;
+  width: 100%;
+  padding: 0.2em;
   display: flex;
   justify-content: end;
   gap: 0.2em;
@@ -55,7 +58,7 @@ svg {
   border: 1px solid var(--color-border);
   box-shadow: 0 0 5px 0 var(--color-border);
   & > #display__number {
-    width: 320px;
+    flex: 1;
     height: 4rem;
     text-align: right;
     text-wrap: wrap;
@@ -63,6 +66,7 @@ svg {
     direction: ltr;
     & > span {
       direction: rtl;
+      margin-left: 0.5em;
     }
   }
   & > #display__operator {
@@ -74,8 +78,9 @@ svg {
 }
 
 #keypad {
+  flex: 1;
   margin-top: 0.3em;
-  width: 100%;
+  width: 104%;
   display: flex;
   flex-direction: column;
   & > div {
@@ -83,9 +88,8 @@ svg {
     flex: 1;
     justify-content: space-between;
     align-items: center;
-    & > div {
+    & > button {
       flex: 1;
-      width: 1.5em;
       margin: 0.125em;
       font-size: 3.5rem;
       text-align: center;
@@ -100,10 +104,10 @@ svg {
     &:first-child > * {
       background-color: var(--color-background-accent);
       &:not(:last-child) {
-        flex-grow: 1.62;
+        flex-grow: 1.7;
       }
     }
-    & > div:hover {
+    & > button:hover {
       background-color: rgba(255, 255, 255, 0.5);
     }
   }
